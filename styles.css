@@ -2,8 +2,44 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
 }
 
-.lol {
-  color: red;
+body {
+  background: linear-gradient(to right, #3f4c6b, #606c88); 
+}
+
+h3 {
+  font-size: 82px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid red;
+}
+
+.scores__container {
+  display: flex;
+  padding: 20px;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+}
+
+.scores {
+  padding: 30px
+}
+
+.scores_tag {
+  padding: 5px;
+  background: #00cec9;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold;
+  font
 }
