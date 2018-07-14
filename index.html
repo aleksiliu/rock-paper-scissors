@@ -14,34 +14,36 @@
         <div class="scores__container">
 
             <div class="scores">
-                <h3 class="scores__number">0</h3>
+                <h3 class="scores__number js-score-user">0</h3>
                 <span class="scores_tag">user</span>
             </div>
 
             <div class="scores">
-                <h3 class="scores__number">0</h3>
+                <h3 class="scores__number js-score-computer">0</h3>
                 <span class="scores_tag">computer</span>
             </div>
 
         </div>
 
+        <h1 class="results"></h1>
+
         <div class="weapon__container">
 
-            <div class="weapon"> 
+            <div class="weapon js-rock"> 
                 
                 <img class="rock__img" src="img/rock.svg" alt="Rock">
                 <p class="rock__title"> Rock </p>
             
             </div>
 
-            <div class="weapon"> 
+            <div class="weapon js-paper"> 
                     
-                <img class="rock__img" src="img/paper.svg" alt="Paper">
-                <p class="rock__title"> Paper </p>
+                <img class="paper__img" src="img/paper.svg" alt="Paper">
+                <p class="paper__title"> Paper </p>
                 
             </div>
 
-            <div class="weapon"> 
+            <div class="weapon js-scissors"> 
                         
                 <img class="scissors__img" src="img/scissors.svg" alt="Scissors">
                 <p class="scissors__title"> Scissors </p>
@@ -51,6 +53,89 @@
         </div>
 
     </div>
+
+    <script>
+
+    let userScore = 0;
+    let computerScore = 0;
+
+    let userScore_h3 = document.querySelector('.js-score-user');
+    let computerScore_h3 = document.querySelector('.js-score-computer');
+    let results_h1 = document.querySelector('.results');
+
+    let paper = document.querySelector('.js-paper');
+    let rock = document.querySelector('.js-rock');
+    let scissors = document.querySelector('.js-scissors');
+
+    let weapons = ['rock', 'paper', 'scissors'];
+
+
+    function computerSelection() {
+        return weapons[Math.floor(Math.random() * weapons.length)];
+    }
+
+    function win(userChoice, computerChoice) {
+        userScore++;
+        userScore_h3.innerHTML = userScore;
+        computerScore_h3.innerHTML = computerScore;
+        results_h1.innerHTML = userChoice + ' beats ' + computerChoice +'.' + ' You win';
+    }
+    
+    function lose(userChoice, computerChoice) {
+        computerScore++;
+        userScore_h3.innerHTML = userScore;
+        computerScore_h3.innerHTML = computerScore;
+        results_h1.innerHTML = userChoice + ' loses to ' + computerChoice +'.' + ' You lost';
+    }
+
+    function tie(userChoice, computerChoice) {
+        userScore++;
+        userScore_h3.innerHTML = userScore;
+        computerScore_h3.innerHTML = computerScore;
+        results_h1.innerHTML = userChoice + ' beats ' + computerChoice +'.' + ' You win';
+    }
+
+
+    function game(userChoice) {
+        const computerChoice = computerSelection();
+        switch (userChoice + computerChoice) {
+            case 'rockscissors':
+            case 'paperrock':
+            case 'scissorspaper':
+                win(userChoice, computerChoice);
+                break;
+            case 'rockpaper':
+            case 'paperscissors':
+            case 'scissorsrock':
+                lose(userChoice, computerChoice);
+                break;
+            case 'rockrock':
+            case 'paperpaper':
+            case 'scissorsscissors':
+                tie(userChoice, computerChoice);
+                break;
+        }
+        
+    }
+
+    function main() {
+
+        paper.addEventListener('click', function() {
+            game('paper');
+        })
+
+        rock.addEventListener('click', function() {
+            game('rock');
+        })
+
+        scissors.addEventListener('click', function() {
+            game('scissors');
+        })
+    }
+
+    main();
+    
+    </script>
 
 </body>
 
