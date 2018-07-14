@@ -67,7 +67,7 @@
     let rock = document.querySelector('.js-rock');
     let scissors = document.querySelector('.js-scissors');
 
-    let weapons = ['rock', 'paper', 'scissors'];
+    let weapons = ['Rock', 'Paper', 'Scissors'];
 
 
     function computerSelection() {
@@ -78,6 +78,7 @@
         userScore++;
         userScore_h3.innerHTML = userScore;
         computerScore_h3.innerHTML = computerScore;
+        results_h1.classList.add('show');
         results_h1.innerHTML = userChoice + ' beats ' + computerChoice +'.' + ' You win';
     }
     
@@ -85,6 +86,7 @@
         computerScore++;
         userScore_h3.innerHTML = userScore;
         computerScore_h3.innerHTML = computerScore;
+        results_h1.classList.add('show');
         results_h1.innerHTML = userChoice + ' loses to ' + computerChoice +'.' + ' You lost';
     }
 
@@ -92,26 +94,26 @@
         userScore++;
         userScore_h3.innerHTML = userScore;
         computerScore_h3.innerHTML = computerScore;
+        results_h1.classList.add('show');
         results_h1.innerHTML = userChoice + ' beats ' + computerChoice +'.' + ' You win';
     }
-
 
     function game(userChoice) {
         const computerChoice = computerSelection();
         switch (userChoice + computerChoice) {
-            case 'rockscissors':
-            case 'paperrock':
-            case 'scissorspaper':
+            case 'RockScissors':
+            case 'PaperRock':
+            case 'ScissorsPaper':
                 win(userChoice, computerChoice);
                 break;
-            case 'rockpaper':
-            case 'paperscissors':
-            case 'scissorsrock':
+            case 'RockPaper':
+            case 'PaperScissors':
+            case 'ScissorsRock':
                 lose(userChoice, computerChoice);
                 break;
-            case 'rockrock':
-            case 'paperpaper':
-            case 'scissorsscissors':
+            case 'RockRock':
+            case 'PaperPaper':
+            case 'ScissorsScissors':
                 tie(userChoice, computerChoice);
                 break;
         }
@@ -121,15 +123,15 @@
     function main() {
 
         paper.addEventListener('click', function() {
-            game('paper');
+            game('Paper');
         })
 
         rock.addEventListener('click', function() {
-            game('rock');
+            game('Rock');
         })
 
         scissors.addEventListener('click', function() {
-            game('scissors');
+            game('Scissors');
         })
     }
 
